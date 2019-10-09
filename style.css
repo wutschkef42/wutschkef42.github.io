@@ -1,0 +1,48 @@
+
+body {
+    font-family: Helvetica, sans-serif;
+    font-size: 14px;
+    margin: 60px 0;
+    line-height: 22px;
+}
+
+h1, h2 {
+    font-family: 'Times New Roman', Times, serif;
+
+
+}
+
+h1 {
+    font-size: 28px;
+    letter-spacing: 0.1px;
+}
+
+h2 {
+    font-size: 22px;
+    color: #555;
+    margin: 0;
+}
+
+.content-wrapper {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+img {
+    width: 350px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.row-item {
+    flex-basis: 50%;
+}
+
+.row-item p {
+    padding: 20px;
+}
