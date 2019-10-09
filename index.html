@@ -1,0 +1,96 @@
+
+<html>
+
+<head>
+    <link rel='stylesheet' type='text/css' href='style.css'/>
+</head>
+
+<body>
+    <div class='content-wrapper'>
+        <h1>React Render Optimisations - Volume 1</h1>
+        <h2>Passing callbacks to optimised child components with useCallback and memo</h2>
+        <p>You want to speed up your React app? In this series we look at different optimisation techniques that improve your apps’ performance.</p>
+        <p>React re-renders components when their props or state changes. An effective optimisation technique is to minimise the number of prop or state changes that React detects, so that components only re-render when truly necessary.</p>
+        <p>Today you will learn how to pass callbacks to optimised child components using React.memo and React.useCallback hook. </p>
+        <h2>React.memo</h2>
+        <p>If your function component renders the same result given the same props, you can wrap it in a call to React.memo for a performance boost by memoizing the result. This means that React will skip rendering the component, and reuse the last rendered result.</p>
+        <h2>React.useCallback</h2>
+        <p>useCallback will return a memoized version of the callback that only changes if one of the dependencies has changed. This is useful when passing callbacks to optimised child components that rely on reference equality to prevent unnecessary renders (e.g. React.memo).</p>
+        <h2>Demo App</h2>
+        <p>Our demo app has 2 components: App and Button. Button receives a callback function which runs onclick. Our goal is to minimise the number of times Button is re-rendered.</p>
+
+        <h2>The basic App component</h2>
+        <p>A regular functional component</p>
+        <div class='row'>
+            <div class='row-item'>
+                <img src='./img/app-component-normal.png'/>
+            </div>
+            <div class='row-item'>
+                <p>The basic app component</p>
+            </div>
+        </div>
+
+        <h2>The optimised App component with useCallback</h2>
+        <p>Here we memoize the callback with useCallback. This ensures that the callback we pass to button does not change between renders.</p>
+        <div class='row'>
+            <div class='row-item'>
+                <img src='./img/app-component-optimised.png'/>
+            </div>
+            <div class='row-item'>
+                <p>The optimised app component memoising the callback using the useCallback hook</p>
+            </div>
+        </div>
+
+
+        <h2>The basic Button component</h2>
+        <p>A regular functional component</p>
+        <div class='row'>
+            <div class='row-item'>
+                <img src='./img/button-component-normal.png'/>
+            </div>
+            <div class='row-item'>
+                <p>The basic button component</p>
+            </div>
+        </div>
+
+        <h2>The optimised App component with React.memo</h2>
+        <p>Here we use React.memo to ensure that the component re-renders only when the props change.</p>
+        <div class='row'>
+            <div class='row-item'>
+                <img src='./img/button-component-optimised.png'/>
+            </div>
+            <div class='row-item'>
+                <p>The optimised button component which uses React.memo</p>
+            </div>
+        </div>
+
+
+        <h2>The basic implementation's performance</h2>
+        <p>The Button component re-renders everytime we click the button because React thinks the callback we pass as a prop has changed.</p>
+        <div class='row'>
+            <div class='row-item'>
+                <img src='./img/result-normal.png'/>
+            </div>
+            <div class='row-item'>
+                <p>The basic button component</p>
+            </div>
+        </div>
+
+        <h2>The optimised implementation's performance</h2>
+        <p>The button component renders only once, no matter how often we click the button.</p>
+        <div class='row'>
+            <div class='row-item'>
+                <img src='./img/result-optimised.png'/>
+            </div>
+            <div class='row-item'>
+                <p>The optimised button component which uses React.memo</p>
+            </div>
+        </div>
+
+        <h2>Summary</h2>
+
+        By wrapping the callback inside the useCallback hook and applying React.memo to the button component, we manage to stop the button from re-rendering unnecessarily. This is a basic example but the performance boost that this techique allows is very noticeable in larger React apps.
+
+    </div>
+</body>
+</html>
